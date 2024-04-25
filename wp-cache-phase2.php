@@ -194,7 +194,7 @@ function wp_cache_serve_cache_file() {
 		if ( false == file_exists( $file ) ) {
 			wp_cache_debug( "No Super Cache file found for current URL: $file" );
 			return false;
-		} elseif ( wpsc_is_get_query() ) {
+		} elseif ( $wp_cache_no_cache_for_get && wpsc_is_get_query() ) {
 			wp_cache_debug( 'GET array not empty. Cannot serve a supercache file. ' . wpsc_dump_get_request() );
 			return false;
 		} elseif ( wp_cache_get_cookies_values() != '' ) {
